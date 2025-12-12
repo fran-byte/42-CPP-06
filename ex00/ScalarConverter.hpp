@@ -6,7 +6,7 @@
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 13:56:57 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/12 16:08:53 by frromero         ###   ########.fr       */
+/*   Updated: 2025/12/12 17:54:27 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,14 @@
 
 class ScalarConverter
 {
-public:
+private:
     ScalarConverter();
     ScalarConverter(std::string const strNumber);
     ~ScalarConverter();
+    ScalarConverter &operator=(ScalarConverter const &other);
 
-    // void static convert();
-
-    // ScalarConverter &operator=(ScalarConverter const &other);
+public:
+       static void convert(std::string const strNumber);
 };
-
-// std::ostream &operator<<(std::ostream &out, ScalarConverter const &other);
 
 #endif

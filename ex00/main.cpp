@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.cpp                                :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/12 14:52:18 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/12 15:29:03 by frromero         ###   ########.fr       */
+/*   Created: 2025/12/12 15:29:16 by frromero          #+#    #+#             */
+/*   Updated: 2025/12/12 15:38:07 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
-ScalarConverter::ScalarConverter(){}
-
-ScalarConverter::ScalarConverter(std::string const strNumber)
-{}
-
-ScalarConverter::~ScalarConverter(){}
+int main(int argc, char **argv)
+{
+    if (argc == 2)    
+        ScalarConverter(argv[1]);    
+    else
+        std::cout << "Invalid parameters [eg: ./conver -42.42 ]" << std::endl;
+    return (0);
+}

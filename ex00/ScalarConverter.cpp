@@ -1,28 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/12 13:56:57 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/12 14:35:29 by frromero         ###   ########.fr       */
+/*   Created: 2025/12/12 14:52:18 by frromero          #+#    #+#             */
+/*   Updated: 2025/12/12 14:52:19 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <strings>
-#include <iostream>
-
-class ScalarConverter
-{
-public:
-    ScalarConverter();
-    ScalarConverter(std::string const strNumber);
-    ~ScalarConverter();
-
-    void static convert();
-
-    ScalarConverter &operator=(ScalarConverter const &other);
-};
-
-std::ostream &operator<<(std::ostream &out, ScalarConverter const &other);

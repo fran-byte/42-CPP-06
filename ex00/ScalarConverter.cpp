@@ -6,7 +6,9 @@
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 14:52:18 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/12 14:52:19 by frromero         ###   ########.fr       */
+/*   Updated: 2025/12/12 14:55:21 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "ScalarConverter.hpp"
 

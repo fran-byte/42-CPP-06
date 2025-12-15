@@ -6,13 +6,17 @@
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/14 18:00:24 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/15 22:10:30 by frromero         ###   ########.fr       */
+/*   Updated: 2025/12/15 22:58:16 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string>
 #include <cctype>
 #include "ScalarConverter.hpp"
+
+void charConvert(std::string strNumber)
+{
+}
 
 int getType(std::string strNumber)
 {

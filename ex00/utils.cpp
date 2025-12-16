@@ -21,8 +21,6 @@ void charConvert(std::string strNumber)
 }
 
 
-
-
 int getType(std::string strNumber)
 {
     // SPECIAL
@@ -36,20 +34,25 @@ int getType(std::string strNumber)
     if (strNumber.length() == 1 && !isInt)
         return (ASCII_PRINTABLE);
 
-    //  INT
+    // INT
     if (isInt)
         return (INT);
 
-    // FLOAT
+    // FLOAT con punto
     size_t pointCount = std::count(strNumber.begin(), strNumber.end(), '.');
-    if (pointCount == 1 && !strNumber.empty() && strNumber[strNumber.size()-1] == 'f')
-        return (FLOAT);
+    if (pointCount == 1 && !strNumber.empty() && strNumber[strNumber.size()-1] == 'f') {
+        // Caso especial: ".f" → inválido
+        if (strNumber == ".f")
+            return (ERROR);
 
-    //  DOUBLE
+        return (FLOAT);
+    }
+
+    // DOUBLE
     if (pointCount == 1)
         return (DOUBLE);
 
-    // FLOAT literal sin punto pero con sufijo f (ej. "5f")
+    // FLOAT sin punto (ej: "123f")
     if (!strNumber.empty() && strNumber[strNumber.size()-1] == 'f') {
         std::string digitsOnly = strNumber.substr(0, strNumber.size()-1);
         if (!digitsOnly.empty() &&
@@ -59,6 +62,7 @@ int getType(std::string strNumber)
 
     return (ERROR);
 }
+
 
 
 

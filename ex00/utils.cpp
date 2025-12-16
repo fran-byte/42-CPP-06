@@ -36,7 +36,7 @@ int getType(std::string strNumber)
         return (INT);
     // Detectamos DOUBLE
     size_t pointCount = std::count(strNumber.begin(), strNumber.end(), '.');
-    if (pointCount == 1) {
+    if (pointCount == 1)
         return (DOUBLE);
 
     return (ERROR);

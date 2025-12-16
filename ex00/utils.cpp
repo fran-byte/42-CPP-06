@@ -44,7 +44,7 @@ int getType(const std::string strNumber)
     if (pointCount == 1)
         return (DOUBLE);
 
-    // FLOAT literal sin punto pero con sufijo f (ej. "5f")
+    // FLOAT 
             size_t pointCount = std::count(strNumber.begin(), strNumber.end(), '.');
     if (pointCount == 1 && !strNumber.empty() && strNumber[strNumber.size()-1] == 'f')
         return (FLOAT);

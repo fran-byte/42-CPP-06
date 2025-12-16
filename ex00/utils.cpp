@@ -37,7 +37,7 @@ void specialConvert(std::string strNumber)
     if (strNumber == "nan" || strNumber == "nanf")
     {
          std::cout << "float: nanf"  << std::endl;
-         std::cout << "double: naf"  << std::endl; 
+         std::cout << "double: nan"  << std::endl; 
     }
 
 }

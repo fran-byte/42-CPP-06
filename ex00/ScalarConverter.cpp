@@ -6,7 +6,7 @@
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 14:52:18 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/15 22:57:37 by frromero         ###   ########.fr       */
+/*   Updated: 2025/12/16 17:12:53 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,15 @@ void ScalarConverter::convert(std::string const &strNumber)
     switch (type)
     {
     case SPECIAL:
-         specialConvert(strNumber);
+        specialConvert(strNumber);
         break;
 
-    case ASCII_PRINTABLE:       
-        charConvert(strNumber);
+    case ASCII_PRINTABLE:
+        generalConvert(strNumber, type);
         break;
 
     case INT:
-        std::cout << "Type: INT" << std::endl;
-        // intConvert(strNumber);
+        generalConvert(strNumber, type);
         break;
 
     case FLOAT:

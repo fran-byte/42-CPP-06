@@ -6,7 +6,7 @@
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/14 18:00:24 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/16 17:00:12 by frromero         ###   ########.fr       */
+/*   Updated: 2025/12/16 17:16:08 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void generalConvert(std::string strNumber, int type)
 {
     char c;
     int intNumber;
+    float floatNumber;
+    double doubleNumber;
     std::cout << std::fixed << std::setprecision(1);
 
     if (type == ASCII_PRINTABLE)
@@ -34,8 +36,8 @@ void generalConvert(std::string strNumber, int type)
 
         c = strNumber[0];
         intNumber = static_cast<int>(c);
-        float floatNumber = static_cast<float>(c);
-        double doubleNumber = static_cast<double>(c);
+        floatNumber = static_cast<float>(c);
+        doubleNumber = static_cast<double>(c);
 
         std::cout << "char:  '" << strNumber << "'" << std::endl;
         std::cout << "int:    " << intNumber << std::endl;
@@ -48,7 +50,7 @@ void generalConvert(std::string strNumber, int type)
         if (!isPrintable(intNumber))
             std::cout << "char:  Non displayable" << std::endl;
         else
-            std::cout << "char:  '" << (static_cast<char>(intNumber)) << std::endl;
+            std::cout << "char:  " << (static_cast<char>(intNumber)) << std::endl;
         // int intNumber = static_cast<int>(c);
         // float floatNumber = static_cast<float>(c);
         // double doubleNumber = static_cast<double>(c);

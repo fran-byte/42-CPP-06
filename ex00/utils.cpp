@@ -13,31 +13,52 @@
 #include <string>
 #include <cctype>
 #include "ScalarConverter.hpp"
+#include <algorithm> 
 
 void charConvert(std::string strNumber)
 {
     (void) strNumber;
 }
 
-int getType(std::string strNumber)
+
+
+
+int getType(const std::string strNumber)
 {
     // DETECTAMOS ESPECIALES
     if (strNumber == "-inff" || strNumber == "+inff" || strNumber == "nanf")
         return (SPECIAL);
     if (strNumber == "-inf" || strNumber == "+inf" || strNumber == "nan")
         return (SPECIAL);
+
     // DETECTAMOS SI ES ASCII_PRINTABLE
     bool isInt = strNumber.find_first_not_of("0123456789") == std::string::npos;
-    bool isPoint = (strNumber.find_first_not_of("0123456789") == std::string::npos) && (strNumber.find_first_not_of(".") == std::string::npos);
     if (strNumber.length() == 1 && !isInt)
         return (ASCII_PRINTABLE);
+
     // DETECTAMOS INT
     if (isInt)
         return (INT);
-    // Detectamos DOUBLE
+
+    // Detectamos FLOAT literal con punto + sufijo f
     size_t pointCount = std::count(strNumber.begin(), strNumber.end(), '.');
+    if (pointCount == 1 && !strNumber.empty() && strNumber[strNumber.size()-1] == 'f')
+        return (FLOAT);
+
+    // Detectamos DOUBLE literal (punto sin sufijo f)
     if (pointCount == 1)
         return (DOUBLE);
 
+    // Detectamos FLOAT literal sin punto pero con sufijo f (ej. "5f")
+    if (!strNumber.empty() && strNumber[strNumber.size()-1] == 'f') {
+        std::string digitsOnly = strNumber.substr(0, strNumber.size()-1);
+        if (!digitsOnly.empty() &&
+            digitsOnly.find_first_not_of("0123456789") == std::string::npos)
+            return (FLOAT);
+    }
+
     return (ERROR);
 }
+
+
+

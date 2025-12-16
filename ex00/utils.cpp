@@ -6,7 +6,7 @@
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/14 18:00:24 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/16 21:31:21 by frromero         ###   ########.fr       */
+/*   Updated: 2025/12/16 21:35:25 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,6 @@
 #include "ScalarConverter.hpp"
 #include <algorithm>
 #include <iomanip>
-
-int isPrintable(int p)
-{
-    if (p < 32 || p > 126)
-        return (0);
-    return (1);
-}
 
 void generalConvert(std::string strNumber, int type)
 {
@@ -49,7 +42,7 @@ void generalConvert(std::string strNumber, int type)
         floatNumber = static_cast<float>(intNumber);
         doubleNumber = static_cast<double>(intNumber);
 
-        if (!isPrintable(intNumber))
+        if (intNumber < 32 || intNumber > 126)
             std::cout << "char:  Non displayable" << std::endl;
         else
             std::cout << "char:  '" << (static_cast<char>(intNumber)) << "'" << std::endl;
@@ -63,7 +56,7 @@ void generalConvert(std::string strNumber, int type)
         intNumber = static_cast<float>(floatNumber);
         doubleNumber = static_cast<double>(floatNumber);
 
-        if (!isPrintable(intNumber))
+        if (intNumber < 32 || intNumber > 126)
             std::cout << "char:  Non displayable" << std::endl;
         else
             std::cout << "char:  '" << (static_cast<char>(intNumber)) << "'" << std::endl;
@@ -78,7 +71,7 @@ void generalConvert(std::string strNumber, int type)
         intNumber = static_cast<float>(doubleNumber);
         floatNumber = static_cast<double>(doubleNumber);
 
-        if (!isPrintable(intNumber))
+        if (intNumber < 32 || intNumber > 126)
             std::cout << "char:  Non displayable" << std::endl;
         else
             std::cout << "char:  '" << (static_cast<char>(intNumber)) << "'" << std::endl;

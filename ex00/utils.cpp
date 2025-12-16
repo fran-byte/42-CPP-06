@@ -16,18 +16,25 @@
 
 void charConvert(std::string strNumber)
 {
+    (void) strNumber;
 }
 
 int getType(std::string strNumber)
 {
+    // DETECTAMOS ESPECIALES
     if (strNumber == "-inff" || strNumber == "+inff" || strNumber == "nanf")
-        return (FLOAT);
+        return (SPECIAL);
     if (strNumber == "-inf" || strNumber == "+inf" || strNumber == "nan")
-        return (DOUBLE);
+        return (SPECIAL);
     // DETECTAMOS SI ES ASCII_PRINTABLE
     bool isInt = strNumber.find_first_not_of("0123456789") == std::string::npos;
     if (strNumber.length() == 1 && !isInt)
         return (ASCII_PRINTABLE);
+    // DETECTAMOS INT
+    if (isInt)
+        return (INT);
+    // Detectamos DOUBLE
+    
 
     return (ERROR);
 }

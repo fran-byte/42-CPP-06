@@ -19,6 +19,7 @@
 int getType(std::string strNumber);
 
 void charConvert(std::string const strNumber);
+void specialConvert(std::string strNumber);
 
 enum e_type
 {

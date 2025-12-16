@@ -35,12 +35,10 @@ void ScalarConverter::convert(std::string const &strNumber)
     switch (type)
     {
     case SPECIAL:
-        std::cout << "Type: SPECIAL" << std::endl;
-        // specialConvert(strNumber);
+         specialConvert(strNumber);
         break;
 
-    case ASCII_PRINTABLE:
-        std::cout << "Type: CHAR" << std::endl;
+    case ASCII_PRINTABLE:       
         charConvert(strNumber);
         break;
 

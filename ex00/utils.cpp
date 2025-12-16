@@ -14,10 +14,32 @@
 #include <cctype>
 #include "ScalarConverter.hpp"
 #include <algorithm> 
+#include <iomanip>
 
 void charConvert(std::string strNumber)
 {
-    (void) strNumber;
+    char c = strNumber[0];
+    int intNumber = static_cast<int>(c);    
+    float floatNumber = static_cast<float>(c);
+    double doubleNumber = static_cast<double>(c);
+
+    std::cout << std::fixed << std::setprecision(1);
+    std::cout << "char: '" << strNumber << "'" << std::endl;
+    std::cout << "int: " << intNumber  << std::endl;    
+    std::cout << "float: " << floatNumber  << "f" <<std::endl;
+    std::cout << "double: " << doubleNumber  <<std::endl;
+}
+
+void specialConvert(std::string strNumber)
+{
+    std::cout << "char: impossible"  << std::endl;
+    std::cout << "int: impossible"  << std::endl;  
+    if (strNumber == "nan" || strNumber == "nanf")
+    {
+         std::cout << "float: nanf"  << std::endl;
+         std::cout << "double: naf"  << std::endl; 
+    }
+
 }
 
 

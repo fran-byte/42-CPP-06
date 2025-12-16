@@ -28,7 +28,7 @@ ScalarConverter &ScalarConverter::operator=(ScalarConverter const &other)
     return *this;
 }
 
-void ScalarConverter::convert(std::string const strNumber)
+void ScalarConverter::convert(std::string const &strNumber)
 {
     int type = getType(strNumber);
 

@@ -17,7 +17,8 @@
 #include <iostream>
 
 int getType(std::string strNumber);
-void charConvert(std::string strNumber);
+
+void charConvert(std::string const strNumber);
 
 enum e_type
 {
@@ -38,7 +39,7 @@ private:
     ScalarConverter &operator=(ScalarConverter const &other);
 
 public:
-    static void convert(std::string const strNumber);
+    static void convert(std::string const &strNumber);
 };
 
 #endif

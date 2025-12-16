@@ -45,15 +45,16 @@ int getType(const std::string strNumber)
         return (DOUBLE);
 
     // FLOAT literal sin punto pero con sufijo f (ej. "5f")
+            size_t pointCount = std::count(strNumber.begin(), strNumber.end(), '.');
+    if (pointCount == 1 && !strNumber.empty() && strNumber[strNumber.size()-1] == 'f')
+        return (FLOAT);
     if (!strNumber.empty() && strNumber[strNumber.size()-1] == 'f') {
         std::string digitsOnly = strNumber.substr(0, strNumber.size()-1);
         if (!digitsOnly.empty() &&
             digitsOnly.find_first_not_of("0123456789") == std::string::npos)
             return (FLOAT);
     }
-        size_t pointCount = std::count(strNumber.begin(), strNumber.end(), '.');
-    if (pointCount == 1 && !strNumber.empty() && strNumber[strNumber.size()-1] == 'f')
-        return (FLOAT);
+
 
     return (ERROR);
 }

@@ -6,7 +6,7 @@
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/14 18:00:24 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/16 21:35:25 by frromero         ###   ########.fr       */
+/*   Updated: 2025/12/16 22:02:36 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "ScalarConverter.hpp"
 #include <algorithm>
 #include <iomanip>
+#include <cmath>
 
 void generalConvert(std::string strNumber, int type)
 {
@@ -61,23 +62,41 @@ void generalConvert(std::string strNumber, int type)
         else
             std::cout << "char:  '" << (static_cast<char>(intNumber)) << "'" << std::endl;
         std::cout << "int:    " << intNumber << std::endl;
-        std::cout << "float:  " << floatNumber << "f" << std::endl;
-        std::cout << "double: " << doubleNumber << std::endl;
+        if (fmod(doubleNumber, 1.0) == 0.0)
+        {
+            std::cout << "float:  " << floatNumber << ".0f" << std::endl;
+            std::cout << "double: " << doubleNumber << ".0" << std::endl;
+        }
+        else
+        {
+            std::cout << "float:  " << floatNumber << "f" << std::endl;
+            std::cout << "double: " << doubleNumber << std::endl;
+        }
     }
 
     if (type == DOUBLE)
     {
         doubleNumber = atof(strNumber.c_str());
-        intNumber = static_cast<float>(doubleNumber);
-        floatNumber = static_cast<double>(doubleNumber);
+        intNumber = static_cast<int>(doubleNumber);
+        floatNumber = static_cast<float>(doubleNumber);
 
         if (intNumber < 32 || intNumber > 126)
             std::cout << "char:  Non displayable" << std::endl;
         else
-            std::cout << "char:  '" << (static_cast<char>(intNumber)) << "'" << std::endl;
+            std::cout << "char:  '" << static_cast<char>(intNumber) << "'" << std::endl;
+
         std::cout << "int:    " << intNumber << std::endl;
-        std::cout << "float:  " << floatNumber << "f" << std::endl;
-        std::cout << "double: " << doubleNumber << std::endl;
+
+        if (fmod(doubleNumber, 1.0) == 0.0)
+        {
+            std::cout << "float:  " << floatNumber << ".0f" << std::endl;
+            std::cout << "double: " << doubleNumber << ".0" << std::endl;
+        }
+        else
+        {
+            std::cout << "float:  " << floatNumber << "f" << std::endl;
+            std::cout << "double: " << doubleNumber << std::endl;
+        }
     }
 }
 

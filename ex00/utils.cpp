@@ -25,27 +25,27 @@ void charConvert(std::string strNumber)
 
 int getType(const std::string strNumber)
 {
-    // DETECTAMOS ESPECIALES
+    // SPECIAL
     if (strNumber == "-inff" || strNumber == "+inff" || strNumber == "nanf")
         return (SPECIAL);
     if (strNumber == "-inf" || strNumber == "+inf" || strNumber == "nan")
         return (SPECIAL);
 
-    // DETECTAMOS SI ES ASCII_PRINTABLE
+    // ASCII_PRINTABLE
     bool isInt = strNumber.find_first_not_of("0123456789") == std::string::npos;
     if (strNumber.length() == 1 && !isInt)
         return (ASCII_PRINTABLE);
 
-    // DETECTAMOS INT
+    //  INT
     if (isInt)
         return (INT);
 
-    // Detectamos FLOAT literal con punto + sufijo f
+    // FLOAT
     size_t pointCount = std::count(strNumber.begin(), strNumber.end(), '.');
     if (pointCount == 1 && !strNumber.empty() && strNumber[strNumber.size()-1] == 'f')
         return (FLOAT);
 
-    // Detectamos DOUBLE literal (punto sin sufijo f)
+    //  DOUBLE
     if (pointCount == 1)
         return (DOUBLE);
 

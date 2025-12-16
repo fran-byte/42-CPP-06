@@ -6,7 +6,7 @@
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/14 18:00:24 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/16 17:16:08 by frromero         ###   ########.fr       */
+/*   Updated: 2025/12/16 21:30:58 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void generalConvert(std::string strNumber, int type)
     int intNumber;
     float floatNumber;
     double doubleNumber;
-    std::cout << std::fixed << std::setprecision(1);
+    // std::cout << std::fixed << std::setprecision(1);
 
     if (type == ASCII_PRINTABLE)
     {
@@ -47,13 +47,45 @@ void generalConvert(std::string strNumber, int type)
     if (type == INT)
     {
         intNumber = atoi(strNumber.c_str());
+        floatNumber = static_cast<float>(intNumber);
+        doubleNumber = static_cast<double>(intNumber);
+
         if (!isPrintable(intNumber))
             std::cout << "char:  Non displayable" << std::endl;
         else
-            std::cout << "char:  " << (static_cast<char>(intNumber)) << std::endl;
-        // int intNumber = static_cast<int>(c);
-        // float floatNumber = static_cast<float>(c);
-        // double doubleNumber = static_cast<double>(c);
+            std::cout << "char:  '" << (static_cast<char>(intNumber)) << "'" << std::endl;
+        std::cout << "int:    " << intNumber << std::endl;
+        std::cout << "float:  " << floatNumber << ".0f" << std::endl;
+        std::cout << "double: " << doubleNumber << ".0" << std::endl;
+    }
+    if (type == FLOAT)
+    {
+        floatNumber = atof(strNumber.c_str());
+        intNumber = static_cast<float>(floatNumber);
+        doubleNumber = static_cast<double>(floatNumber);
+
+        if (!isPrintable(intNumber))
+            std::cout << "char:  Non displayable" << std::endl;
+        else
+            std::cout << "char:  '" << (static_cast<char>(intNumber)) << "'" << std::endl;
+        std::cout << "int:    " << intNumber << std::endl;
+        std::cout << "float:  " << floatNumber << "f" << std::endl;
+        std::cout << "double: " << doubleNumber << std::endl;
+    }
+
+    if (type == DOUBLE)
+    {
+        doubleNumber = atof(strNumber.c_str());
+        intNumber = static_cast<float>(doubleNumber);
+        floatNumber = static_cast<double>(doubleNumber);
+
+        if (!isPrintable(intNumber))
+            std::cout << "char:  Non displayable" << std::endl;
+        else
+            std::cout << "char:  '" << (static_cast<char>(intNumber)) << "'" << std::endl;
+        std::cout << "int:    " << intNumber << std::endl;
+        std::cout << "float:  " << floatNumber << "f" << std::endl;
+        std::cout << "double: " << doubleNumber << std::endl;
     }
 }
 
@@ -95,11 +127,10 @@ int getType(std::string strNumber)
     if (isInt)
         return (INT);
 
-    // FLOAT con punto
+    // FLOAT
     size_t pointCount = std::count(strNumber.begin(), strNumber.end(), '.');
     if (pointCount == 1 && !strNumber.empty() && strNumber[strNumber.size() - 1] == 'f')
     {
-        // Caso especial: ".f" → inválido
         if (strNumber == ".f")
             return (ERROR);
 
@@ -110,7 +141,7 @@ int getType(std::string strNumber)
     if (pointCount == 1)
         return (DOUBLE);
 
-    // FLOAT sin punto (ej: "123f")
+    // FLOAT
     if (!strNumber.empty() && strNumber[strNumber.size() - 1] == 'f')
     {
         std::string digitsOnly = strNumber.substr(0, strNumber.size() - 1);

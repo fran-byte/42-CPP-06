@@ -6,7 +6,7 @@
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 13:56:57 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/15 22:57:34 by frromero         ###   ########.fr       */
+/*   Updated: 2025/12/16 17:00:33 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 int getType(std::string strNumber);
 
-void charConvert(std::string const strNumber);
+void generalConvert(std::string strNumber, int type);
 void specialConvert(std::string strNumber);
 
 enum e_type

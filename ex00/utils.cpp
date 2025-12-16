@@ -6,7 +6,7 @@
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/14 18:00:24 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/16 21:30:58 by frromero         ###   ########.fr       */
+/*   Updated: 2025/12/16 21:31:21 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void generalConvert(std::string strNumber, int type)
     int intNumber;
     float floatNumber;
     double doubleNumber;
-    // std::cout << std::fixed << std::setprecision(1);
 
     if (type == ASCII_PRINTABLE)
     {

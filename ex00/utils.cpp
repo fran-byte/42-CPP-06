@@ -24,19 +24,19 @@ void charConvert(std::string strNumber)
     double doubleNumber = static_cast<double>(c);
 
     std::cout << std::fixed << std::setprecision(1);
-    std::cout << "char: '" << strNumber << "'" << std::endl;
-    std::cout << "int: " << intNumber  << std::endl;    
-    std::cout << "float: " << floatNumber  << "f" <<std::endl;
+    std::cout << "char:  '" << strNumber << "'" << std::endl;
+    std::cout << "int:    " << intNumber  << std::endl;    
+    std::cout << "float:  " << floatNumber  << "f" <<std::endl;
     std::cout << "double: " << doubleNumber  <<std::endl;
 }
 
 void specialConvert(std::string strNumber)
 {
-    std::cout << "char: impossible"  << std::endl;
-    std::cout << "int: impossible"  << std::endl;  
+    std::cout << "char:   impossible"  << std::endl;
+    std::cout << "int:    impossible"  << std::endl;  
     if (strNumber == "nan" || strNumber == "nanf")
     {
-         std::cout << "float: nanf"  << std::endl;
+         std::cout << "float:  nanf"  << std::endl;
          std::cout << "double: nan"  << std::endl; 
     }
 

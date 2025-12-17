@@ -6,7 +6,7 @@
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 13:57:03 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/17 20:14:03 by frromero         ###   ########.fr       */
+/*   Updated: 2025/12/17 20:15:35 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 #include <iostream> /* cout, endl */
 #include <cstdlib>  /* strtod, strtol */
 #include <cerrno>   /* errno, ERANGE */
-#include <climits>  /* INT_MIN, INT_MAX (required by subject) */
-#include <cfloat>   /* FLT_MAX, FLT_MIN (required by subject) */
+#include <climits>  /* INT_MIN, INT_MAX */
+#include <cfloat>   /* FLT_MAX, FLT_MIN */
 #include <cmath>    /* isnan, isinf, floor */
 #include <iomanip>  /* setprecision, fixed */
 #include <string>   /* std::string */

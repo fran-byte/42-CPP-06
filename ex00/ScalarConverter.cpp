@@ -6,7 +6,7 @@
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 13:57:03 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/17 20:30:27 by frromero         ###   ########.fr       */
+/*   Updated: 2025/12/17 20:32:32 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 #include <cctype>   /* isdigit, isprint */
 
 /* Detect input type from string */
-static int getType(const std::string &literal)
+static int getType(const std::string &strLiteral)
 {
-    std::string str = literal;
+    std::string str = strLiteral;
 
     /* Check special cases */
     if (str == "-inff" || str == "+inff" || str == "nanf" ||
@@ -173,9 +173,9 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other)
 }
 
 /* ScalarCoverter - Method*/
-void ScalarConverter::convert(const std::string &literal)
+void ScalarConverter::convert(const std::string &strLiteral)
 {
-    int type = getType(literal);
+    int type = getType(strLiteral);
 
     if (type == TYPE_ERROR)
     {
@@ -189,12 +189,12 @@ void ScalarConverter::convert(const std::string &literal)
         std::cout << "char: impossible" << std::endl;
         std::cout << "int: impossible" << std::endl;
 
-        if (literal == "nan" || literal == "nanf")
+        if (strLiteral == "nan" || strLiteral == "nanf")
         {
             std::cout << "float: nanf" << std::endl;
             std::cout << "double: nan" << std::endl;
         }
-        else if (literal == "-inf" || literal == "-inff")
+        else if (strLiteral == "-inf" || strLiteral == "-inff")
         {
             std::cout << "float: -inff" << std::endl;
             std::cout << "double: -inf" << std::endl;
@@ -210,15 +210,15 @@ void ScalarConverter::convert(const std::string &literal)
     /* CONVERT */
     if (type == TYPE_CHAR)
     {
-        char c = literal[0];
+        char c = strLiteral[0];
         displayResults(static_cast<double>(c));
     }
     else
     {
-        std::string convertStr = literal;
-        if (type == TYPE_FLOAT && !literal.empty() &&
-            literal[literal.length() - 1] == 'f')
-            convertStr = literal.substr(0, literal.length() - 1);
+        std::string convertStr = strLiteral;
+        if (type == TYPE_FLOAT && !strLiteral.empty() &&
+            strLiteral[strLiteral.length() - 1] == 'f')
+            convertStr = strLiteral.substr(0, strLiteral.length() - 1);
 
         char *end;
         errno = 0;

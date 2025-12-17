@@ -6,7 +6,7 @@
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 13:56:57 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/17 20:14:58 by frromero         ###   ########.fr       */
+/*   Updated: 2025/12/17 20:34:30 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ private:
     ~ScalarConverter();
 
 public:
-    static void convert(const std::string &literal);
+    static void convert(const std::string &strLiteral);
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 15:29:16 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/17 20:21:58 by frromero         ###   ########.fr       */
+/*   Updated: 2025/12/17 20:33:38 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int main(int argc, char **argv)
     {
         std::cout << "Invalid parameters [eg: ./convert -42.42 ]" << std::endl;
         std::cout << "Usage: ./convert <literal>" << std::endl;
-        std::cout << "Literal must be a single C++ literal: char, int, float, or double." << std::endl;
+        std::cout << "literal must be a single C++ strLiteral: char, int, float, or double." << std::endl;
         std::cout << "Examples:" << std::endl;
         std::cout << "  ./convert a" << std::endl;
         std::cout << "  ./convert 42" << std::endl;

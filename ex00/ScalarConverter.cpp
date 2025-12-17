@@ -6,7 +6,7 @@
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 13:57:03 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/17 21:25:43 by frromero         ###   ########.fr       */
+/*   Updated: 2025/12/17 21:27:18 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,7 +190,6 @@ void ScalarConverter::convert(const std::string &str)
         if (d == HUGE_VAL)
             std::cout << "float: +inff" << std::endl
                       << "double: +inf" << std::endl;
-
         else if (d == -HUGE_VAL)
             std::cout << "float: -inff" << std::endl
                       << "double: -inf" << std::endl;

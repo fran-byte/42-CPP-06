@@ -6,7 +6,7 @@
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 13:57:03 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/17 21:15:06 by frromero         ###   ########.fr       */
+/*   Updated: 2025/12/17 21:18:34 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,23 @@ static int getType(const std::string &str)
     if (str.length() == 1 && !std::isdigit(str[0]) && str[0] != '-' && str[0] != '+')
         return CHAR;
 
-    /* Check 'f'  */
-    bool hasF = (str.length() > 1 && str[str.length() - 1] == 'f');
-    std::string num = hasF ? str.substr(0, str.length() - 1) : str;
+    /* Check 'f' suffix */
+    bool hasF = false;
+    std::string num = str;
+
+    if (str.length() > 1 && str[str.length() - 1] == 'f')
+    {
+        hasF = true;
+        num = str.substr(0, str.length() - 1);
+    }
 
     /* Validate format */
     size_t dots = 0;
     bool hasDigit = false;
-    size_t i = (num[0] == '-' || num[0] == '+') ? 1 : 0;
+    size_t i = 0;
+
+    if (!num.empty() && (num[0] == '-' || num[0] == '+'))
+        i = 1;
 
     for (; i < num.length(); ++i)
     {
@@ -48,7 +57,8 @@ static int getType(const std::string &str)
             hasDigit = true;
         else if (num[i] == '.')
         {
-            if (++dots > 1)
+            ++dots;
+            if (dots > 1)
                 return ERROR;
         }
         else
@@ -82,19 +92,13 @@ static void displayResults(double d)
             std::cout << "char: Non displayable" << std::endl;
     }
     else
-    {
         std::cout << "char: impossible" << std::endl;
-    }
 
     /* Int */
     if (!std::isnan(d) && !std::isinf(d) && d >= INT_MIN && d <= INT_MAX)
-    {
         std::cout << "int: " << static_cast<int>(d) << std::endl;
-    }
     else
-    {
         std::cout << "int: impossible" << std::endl;
-    }
 
     /* Float */
     float f = static_cast<float>(d);
@@ -212,11 +216,7 @@ void ScalarConverter::convert(const std::string &str)
         }
     }
     else if (end == num.c_str())
-    {
         std::cout << "Invalid input" << std::endl;
-    }
     else
-    {
         displayResults(d);
-    }
 }

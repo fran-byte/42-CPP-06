@@ -6,18 +6,7 @@
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 13:57:03 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/17 21:11:16 by frromero         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ScalarConverter.cpp                                :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/12 13:57:03 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/17 21:01:15 by frromero         ###   ########.fr       */
+/*   Updated: 2025/12/17 21:15:06 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +30,10 @@ static int getType(const std::string &str)
         return SPECIAL;
 
     /* Single character */
-    if (str.length() == 1 && !isdigit(str[0]) && str[0] != '-' && str[0] != '+')
+    if (str.length() == 1 && !std::isdigit(str[0]) && str[0] != '-' && str[0] != '+')
         return CHAR;
 
-    /* Check for float suffix */
+    /* Check 'f'  */
     bool hasF = (str.length() > 1 && str[str.length() - 1] == 'f');
     std::string num = hasF ? str.substr(0, str.length() - 1) : str;
 
@@ -55,7 +44,7 @@ static int getType(const std::string &str)
 
     for (; i < num.length(); ++i)
     {
-        if (isdigit(num[i]))
+        if (std::isdigit(num[i]))
             hasDigit = true;
         else if (num[i] == '.')
         {
@@ -87,7 +76,10 @@ static void displayResults(double d)
     if (!std::isnan(d) && !std::isinf(d) && d >= 0 && d <= 127)
     {
         char c = static_cast<char>(d);
-        std::cout << "char: " << (isprint(c) ? "'" + std::string(1, c) + "'" : "Non displayable") << std::endl;
+        if (std::isprint(c))
+            std::cout << "char: '" << c << "'" << std::endl;
+        else
+            std::cout << "char: Non displayable" << std::endl;
     }
     else
     {
@@ -110,11 +102,16 @@ static void displayResults(double d)
     if (std::isnan(d))
         std::cout << "nanf";
     else if (std::isinf(d))
-        std::cout << (d < 0 ? "-inff" : "+inff");
+    {
+        if (d < 0)
+            std::cout << "-inff";
+        else
+            std::cout << "+inff";
+    }
     else
     {
         std::cout << f;
-        if (d == static_cast<long long>(d) && d <= 1e6 && d >= -1e6)
+        if (d == static_cast<long long>(d) && d <= 1000000 && d >= -1000000)
             std::cout << ".0";
         std::cout << "f";
     }
@@ -125,11 +122,16 @@ static void displayResults(double d)
     if (std::isnan(d))
         std::cout << "nan";
     else if (std::isinf(d))
-        std::cout << (d < 0 ? "-inf" : "+inf");
+    {
+        if (d < 0)
+            std::cout << "-inf";
+        else
+            std::cout << "+inf";
+    }
     else
     {
         std::cout << d;
-        if (d == static_cast<long long>(d) && d <= 1e6 && d >= -1e6)
+        if (d == static_cast<long long>(d) && d <= 1000000 && d >= -1000000)
             std::cout << ".0";
     }
     std::cout << std::endl;
@@ -154,13 +156,23 @@ void ScalarConverter::convert(const std::string &str)
 
     if (type == SPECIAL)
     {
-        std::cout << "char: impossible\nint: impossible\n";
+        std::cout << "char: impossible" << std::endl;
+        std::cout << "int: impossible" << std::endl;
         if (str == "nan" || str == "nanf")
-            std::cout << "float: nanf\ndouble: nan\n";
+        {
+            std::cout << "float: nanf" << std::endl;
+            std::cout << "double: nan" << std::endl;
+        }
         else if (str == "-inf" || str == "-inff")
-            std::cout << "float: -inff\ndouble: -inf\n";
+        {
+            std::cout << "float: -inff" << std::endl;
+            std::cout << "double: -inf" << std::endl;
+        }
         else
-            std::cout << "float: +inff\ndouble: +inf\n";
+        {
+            std::cout << "float: +inff" << std::endl;
+            std::cout << "double: +inf" << std::endl;
+        }
         return;
     }
 
@@ -177,17 +189,27 @@ void ScalarConverter::convert(const std::string &str)
 
     char *end;
     errno = 0;
-    double d = strtod(num.c_str(), &end);
+    double d = std::strtod(num.c_str(), &end);
 
     if (errno == ERANGE)
     {
-        std::cout << "char: impossible\nint: impossible\n";
+        std::cout << "char: impossible" << std::endl;
+        std::cout << "int: impossible" << std::endl;
         if (d == HUGE_VAL)
-            std::cout << "float: +inff\ndouble: +inf\n";
+        {
+            std::cout << "float: +inff" << std::endl;
+            std::cout << "double: +inf" << std::endl;
+        }
         else if (d == -HUGE_VAL)
-            std::cout << "float: -inff\ndouble: -inf\n";
+        {
+            std::cout << "float: -inff" << std::endl;
+            std::cout << "double: -inf" << std::endl;
+        }
         else
-            std::cout << "float: 0.0f\ndouble: 0.0\n";
+        {
+            std::cout << "float: 0.0f" << std::endl;
+            std::cout << "double: 0.0" << std::endl;
+        }
     }
     else if (end == num.c_str())
     {

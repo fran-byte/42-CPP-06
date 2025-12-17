@@ -6,7 +6,7 @@
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 13:57:03 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/17 21:27:18 by frromero         ###   ########.fr       */
+/*   Updated: 2025/12/17 21:29:20 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,16 +157,22 @@ void ScalarConverter::convert(const std::string &str)
         return;
     }
 
-    /* En la sección SPECIAL: */
-    if (str == "nan" || str == "nanf")
-        std::cout << "float: nanf" << std::endl
-                  << "double: nan" << std::endl;
-    else if (str == "-inf" || str == "-inff")
-        std::cout << "float: -inff" << std::endl
-                  << "double: -inf" << std::endl;
-    else
-        std::cout << "float: +inff" << std::endl
-                  << "double: +inf" << std::endl;
+    /* Handle special cases */
+    if (type == SPECIAL)
+    {
+        std::cout << "char: impossible" << std::endl
+                  << "int: impossible" << std::endl;
+        if (str == "nan" || str == "nanf")
+            std::cout << "float: nanf" << std::endl
+                      << "double: nan" << std::endl;
+        else if (str == "-inf" || str == "-inff")
+            std::cout << "float: -inff" << std::endl
+                      << "double: -inf" << std::endl;
+        else
+            std::cout << "float: +inff" << std::endl
+                      << "double: +inf" << std::endl;
+        return;
+    }
 
     if (type == CHAR)
     {

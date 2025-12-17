@@ -6,7 +6,7 @@
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 13:57:03 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/17 20:35:18 by frromero         ###   ########.fr       */
+/*   Updated: 2025/12/17 20:38:28 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 #include <string>   /* std::string */
 #include <cctype>   /* isdigit, isprint */
 
-/* Detect input type from string */
+/* **************** DETECT TYPE ******************************************** */
 static int getType(const std::string &strLiteral)
 {
     std::string str = strLiteral;
@@ -172,7 +172,9 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other)
     return *this;
 }
 
-/* ScalarCoverter - Method*/
+/* ***************************************************************** */
+/*              ScalarCoverter - Method                              */
+/* ***************************************************************** */
 void ScalarConverter::convert(const std::string &strLiteral)
 {
     int type = getType(strLiteral);
@@ -183,7 +185,7 @@ void ScalarConverter::convert(const std::string &strLiteral)
         return;
     }
 
-    /* Handle special cases*/
+    /* Handle special cases****************************************** */
     if (type == TYPE_SPECIAL)
     {
         std::cout << "char: impossible" << std::endl;

@@ -6,7 +6,7 @@
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 13:56:57 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/17 20:34:30 by frromero         ###   ########.fr       */
+/*   Updated: 2025/12/17 21:08:10 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@
 /* Enum for literal types */
 enum e_type
 {
-    TYPE_ERROR = -1,
-    TYPE_SPECIAL,
-    TYPE_CHAR,
-    TYPE_INT,
-    TYPE_FLOAT,
-    TYPE_DOUBLE
+    ERROR = -1,
+    SPECIAL,
+    CHAR,
+    INT,
+    FLOAT,
+    DOUBLE
 };
 
 class ScalarConverter

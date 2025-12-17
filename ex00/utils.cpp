@@ -16,13 +16,16 @@
 #include <algorithm>
 #include <iomanip>
 #include <cmath>
+#include <climits>
+#include <cstdlib> 
 
 void generalConvert(std::string strNumber, int type)
 {
     char c;
-    int intNumber;
+    long long int intNumber;
     float floatNumber;
     double doubleNumber;
+    char* end;
 
     if (type == ASCII_PRINTABLE)
     {
@@ -39,7 +42,10 @@ void generalConvert(std::string strNumber, int type)
     }
     if (type == INT)
     {
-        intNumber = atoi(strNumber.c_str());
+        //intNumber = atoi(strNumber.c_str());
+        intNumber = strtoll(strNumber.c_str(), &end, 10);
+        if (intNumber > INT_MAX || intNumber < INT_MIN)
+            std::cout<< "MAX o MIN" << std::endl;
         floatNumber = static_cast<float>(intNumber);
         doubleNumber = static_cast<double>(intNumber);
 

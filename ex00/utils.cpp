@@ -44,8 +44,7 @@ void generalConvert(std::string strNumber, int type)
     {
         //intNumber = atoi(strNumber.c_str());
         intNumber = strtoll(strNumber.c_str(), &end, 10);
-        if (intNumber > INT_MAX || intNumber < INT_MIN)
-            std::cout<< "MAX o MIN" << std::endl;
+
         floatNumber = static_cast<float>(intNumber);
         doubleNumber = static_cast<double>(intNumber);
 
@@ -53,7 +52,11 @@ void generalConvert(std::string strNumber, int type)
             std::cout << "char:  Non displayable" << std::endl;
         else
             std::cout << "char:  '" << (static_cast<char>(intNumber)) << "'" << std::endl;
-        std::cout << "int:    " << intNumber << std::endl;
+
+        if (intNumber > INT_MAX || intNumber < INT_MIN)
+            std::cout<< "int:    Out of Range" << std::endl;
+        else
+            std::cout << "int:    " << intNumber << std::endl;
         std::cout << "float:  " << floatNumber << ".0f" << std::endl;
         std::cout << "double: " << doubleNumber << ".0" << std::endl;
     }

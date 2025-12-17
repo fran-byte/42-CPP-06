@@ -6,7 +6,7 @@
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 13:57:03 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/17 21:21:03 by frromero         ###   ########.fr       */
+/*   Updated: 2025/12/17 21:25:43 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,27 +157,16 @@ void ScalarConverter::convert(const std::string &str)
         return;
     }
 
-    if (type == SPECIAL)
-    {
-        std::cout << "char: impossible" << std::endl;
-        std::cout << "int: impossible" << std::endl;
-        if (str == "nan" || str == "nanf")
-        {
-            std::cout << "float: nanf" << std::endl;
-            std::cout << "double: nan" << std::endl;
-        }
-        else if (str == "-inf" || str == "-inff")
-        {
-            std::cout << "float: -inff" << std::endl;
-            std::cout << "double: -inf" << std::endl;
-        }
-        else
-        {
-            std::cout << "float: +inff" << std::endl;
-            std::cout << "double: +inf" << std::endl;
-        }
-        return;
-    }
+    /* En la sección SPECIAL: */
+    if (str == "nan" || str == "nanf")
+        std::cout << "float: nanf" << std::endl
+                  << "double: nan" << std::endl;
+    else if (str == "-inf" || str == "-inff")
+        std::cout << "float: -inff" << std::endl
+                  << "double: -inf" << std::endl;
+    else
+        std::cout << "float: +inff" << std::endl
+                  << "double: +inf" << std::endl;
 
     if (type == CHAR)
     {
@@ -199,20 +188,15 @@ void ScalarConverter::convert(const std::string &str)
         std::cout << "char: impossible" << std::endl;
         std::cout << "int: impossible" << std::endl;
         if (d == HUGE_VAL)
-        {
-            std::cout << "float: +inff" << std::endl;
-            std::cout << "double: +inf" << std::endl;
-        }
+            std::cout << "float: +inff" << std::endl
+                      << "double: +inf" << std::endl;
+
         else if (d == -HUGE_VAL)
-        {
-            std::cout << "float: -inff" << std::endl;
-            std::cout << "double: -inf" << std::endl;
-        }
+            std::cout << "float: -inff" << std::endl
+                      << "double: -inf" << std::endl;
         else
-        {
-            std::cout << "float: 0.0f" << std::endl;
-            std::cout << "double: 0.0" << std::endl;
-        }
+            std::cout << "float: 0.0f" << std::endl
+                      << "double: 0.0" << std::endl;
     }
     else if (end == num.c_str())
         std::cout << "Invalid input" << std::endl;

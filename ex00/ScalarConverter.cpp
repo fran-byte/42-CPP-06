@@ -6,7 +6,7 @@
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 13:57:03 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/17 21:18:34 by frromero         ###   ########.fr       */
+/*   Updated: 2025/12/17 21:21:03 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ static int getType(const std::string &str)
         return DOUBLE;
     if (!hasF && dots == 0)
         return INT;
-
     return ERROR;
 }
 

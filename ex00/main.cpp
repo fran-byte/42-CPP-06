@@ -6,7 +6,7 @@
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 15:29:16 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/17 20:05:55 by frromero         ###   ########.fr       */
+/*   Updated: 2025/12/17 20:21:58 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,19 @@ int main(int argc, char **argv)
 {
     if (argc == 2 && argv[1][0] != '\0')
     {
-        bool allPrintable = true;
+        bool printable = true;
         for (int i = 0; argv[1][i]; i++)
         {
             if (argv[1][i] < 32 || argv[1][i] > 126)
             {
-                allPrintable = false;
+                printable = false;
                 break;
             }
         }
-        if (allPrintable)
+        if (printable)
             ScalarConverter::convert(argv[1]);
         else
-            std::cout << "Parameter/s Not Printable" << std::endl;
+            std::cout << "Parameter Not Printable" << std::endl;
     }
     else
     {

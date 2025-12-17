@@ -6,7 +6,7 @@
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 13:57:03 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/17 20:15:35 by frromero         ###   ########.fr       */
+/*   Updated: 2025/12/17 20:30:27 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int getType(const std::string &literal)
         str = str.substr(0, str.length() - 1);
     }
 
-    /* Validate characters and count decimal points */
+    /* Validate characters / count decimal points */
     size_t pointCount = 0;
     bool hasDigit = false;
     size_t start = 0;
@@ -159,13 +159,10 @@ static void displayResults(double d)
     std::cout << std::endl;
 }
 
-/* ScalarCoverter */
+/* **************  ScalarCoverter  *****************************/
 ScalarConverter::ScalarConverter() {}
 
-ScalarConverter::ScalarConverter(const ScalarConverter &other)
-{
-    (void)other;
-}
+ScalarConverter::ScalarConverter(const ScalarConverter &other) { (void)other; }
 
 ScalarConverter::~ScalarConverter() {}
 
@@ -175,7 +172,7 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other)
     return *this;
 }
 
-/*Method*/
+/* ScalarCoverter - Method*/
 void ScalarConverter::convert(const std::string &literal)
 {
     int type = getType(literal);

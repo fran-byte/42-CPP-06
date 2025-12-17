@@ -6,7 +6,7 @@
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 13:57:03 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/17 20:43:04 by frromero         ###   ########.fr       */
+/*   Updated: 2025/12/17 20:54:57 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,9 +98,7 @@ static void displayResults(double d)
             std::cout << "char: Non displayable" << std::endl;
     }
     else
-    {
         std::cout << "char: impossible" << std::endl;
-    }
 
     /* Int conversion - truncate if within range */
     if (!std::isnan(d) && !std::isinf(d))
@@ -114,14 +112,10 @@ static void displayResults(double d)
             std::cout << "int: " << static_cast<int>(truncated) << std::endl;
         }
         else
-        {
             std::cout << "int: impossible" << std::endl;
-        }
     }
     else
-    {
         std::cout << "int: impossible" << std::endl;
-    }
 
     /* Float conversion */
     float f = static_cast<float>(d);
@@ -210,12 +204,12 @@ void ScalarConverter::convert(const std::string &strLiteral)
     }
 
     /* CONVERT int, float and double values ************************/
-    if (type == TYPE_CHAR)
+    if (type == TYPE_CHAR) /* CHAR */
     {
         char c = strLiteral[0];
         displayResults(static_cast<double>(c));
     }
-    else
+    else /* FLOAT */
     {
         std::string convertStr = strLiteral;
         if (type == TYPE_FLOAT && !strLiteral.empty() &&

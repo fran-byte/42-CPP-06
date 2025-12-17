@@ -6,7 +6,7 @@
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 13:57:03 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/17 20:57:32 by frromero         ###   ########.fr       */
+/*   Updated: 2025/12/17 21:01:15 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,7 +209,7 @@ void ScalarConverter::convert(const std::string &strLiteral)
         char c = strLiteral[0];
         displayResults(static_cast<double>(c));
     }
-    else /* FLOAT */
+    else /* TYPE_INT, TYPE_FLOAT, TYPE_DOUBLE*/
     {
         std::string convertStr = strLiteral;
         if (type == TYPE_FLOAT && !strLiteral.empty() &&

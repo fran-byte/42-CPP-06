@@ -139,7 +139,7 @@ int getType(std::string strNumber)
         return (SPECIAL);
 
     // ASCII_PRINTABLE
-    bool isInt = (strNumber.find_first_not_of("0123456789") == std::string::npos) || (strNumber.size() > 1 && strNumber[0] == '-' && strNumber.find_first_not_of("0123456789", 1) == std::string::npos);
+    bool isInt = (strNumber.find_first_not_of("0123456789") == std::string::npos) || (strNumber.size() > 1 && (strNumber[0] == '-' || strNumber[0] == '+') && strNumber.find_first_not_of("0123456789", 1) == std::string::npos);
     if (strNumber.length() == 1 && !isInt)
         return (ASCII_PRINTABLE);
 

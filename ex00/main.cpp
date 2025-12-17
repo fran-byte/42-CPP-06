@@ -6,11 +6,12 @@
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 15:29:16 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/15 21:41:52 by frromero         ###   ########.fr       */
+/*   Updated: 2025/12/17 20:05:55 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
+#include <iostream>
 
 int main(int argc, char **argv)
 {

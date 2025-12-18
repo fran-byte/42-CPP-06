@@ -190,16 +190,16 @@ void ScalarConverter::convert(const std::string &str)
 
     char *end;
     errno = 0;
-    double d = std::strtod(num.c_str(), &end);
+    double convertedValue = std::strtod(num.c_str(), &end);
 
     if (errno == ERANGE)
     {
         std::cout << "char: impossible" << std::endl;
         std::cout << "int: impossible" << std::endl;
-        if (d == HUGE_VAL)
+        if (convertedValue == HUGE_VAL)
             std::cout << "float: +inff" << std::endl
                       << "double: +inf" << std::endl;
-        else if (d == -HUGE_VAL)
+        else if (convertedValue == -HUGE_VAL)
             std::cout << "float: -inff" << std::endl
                       << "double: -inf" << std::endl;
         else
@@ -209,5 +209,5 @@ void ScalarConverter::convert(const std::string &str)
     else if (end == num.c_str())
         std::cout << "Invalid input" << std::endl;
     else
-        displayResults(d);
+        displayResults(convertedValue);
 }

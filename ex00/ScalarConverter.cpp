@@ -17,197 +17,150 @@
 #include <climits>
 #include <cfloat>
 #include <cmath>
-#include <iomanip>
 #include <string>
 #include <cctype>
 
-/* DETECTING TYPES ************************************************************** */
-static int getType(const std::string &str)
-{
-    /* Special cases */
-    if (str == "-inff" || str == "+inff" || str == "nanf" ||
-        str == "-inf" || str == "+inf" || str == "nan")
+/* Detect type ************************************************************** */
+static int getType(const std::string &str) {
+    if (str=="-inff"||str=="+inff"||str=="nanf"||str=="-inf"||str=="+inf"||str=="nan")
         return SPECIAL;
-
-    /* Single character */
-    if (str.length() == 1 && !std::isdigit(str[0]) && str[0] != '-' && str[0] != '+')
+    if (str.length()==1 && !std::isdigit(str[0]) && str[0]!='-' && str[0]!='+')
         return CHAR;
 
-    /* Check 'f' suffix */
-    bool isFloat = false;
-    std::string num = str;
-
-    if (str.length() > 1 && str[str.length() - 1] == 'f')
-    {
-        isFloat = true;
-        num = str.substr(0, str.length() - 1);
+    bool isFloat=false;
+    std::string num=str;
+    if (str.length()>1 && str[str.length()-1]=='f') {
+        isFloat=true;
+        num=str.substr(0,str.length()-1);
     }
 
-    /* Validate format */
-    size_t dots = 0;
-    bool isDigit = false;
-    size_t i = 0;
+    size_t dots=0;
+    bool digit=false;
+    size_t i=0;
+    if (!num.empty() && (num[0]=='-'||num[0]=='+'))
+        i=1;
 
-    if (!num.empty() && (num[0] == '-' || num[0] == '+'))
-        i = 1;
-
-    for (; i < num.length(); ++i)
-    {
+    for (; i<num.length(); ++i) {
         if (std::isdigit(num[i]))
-            isDigit = true;
-        else if (num[i] == '.')
-        {
+            digit=true;
+        else if (num[i]=='.') {
             ++dots;
-            if (dots > 1)
-                return ERROR;
-        }
-        else
-            return ERROR;
+            if (dots>1) return ERROR;
+        } else return ERROR;
     }
 
-    if (!isDigit)
-        return ERROR;
-
-    /* Determine type */
-    if (isFloat && dots <= 1)
-        return FLOAT;
-    if (!isFloat && dots == 1)
-        return DOUBLE;
-    if (!isFloat && dots == 0)
-        return INT;
-    return ERROR;
+    if (!digit) return ERROR;
+    if (isFloat) return FLOAT;
+    if (dots>0) return DOUBLE;
+    return INT;
 }
 
-/* Display results ************************************************************ */
-static void displayResults(double d)
-{
-    /* Char */
-    if (!std::isnan(d) && !std::isinf(d) && d >= 0 && d <= 127)
-    {
-        char c = static_cast<char>(d);
+/* Display results *********************************************************** */
+static void displayResults(double d) {
+    // Char
+    if (!std::isnan(d) && !std::isinf(d) && d>=0 && d<=127) {
+        char c=static_cast<char>(d);
         if (std::isprint(c))
-            std::cout << "char: '" << c << "'" << std::endl;
+            std::cout<<"char: '"<<c<<"'"<<std::endl;
         else
-            std::cout << "char: Non displayable" << std::endl;
+            std::cout<<"char: Non displayable"<<std::endl;
+    } else {
+        std::cout<<"char: impossible"<<std::endl;
     }
-    else
-        std::cout << "char: impossible" << std::endl;
 
-    /* Int */
-    if (!std::isnan(d) && !std::isinf(d) && d >= INT_MIN && d <= INT_MAX)
-        std::cout << "int: " << static_cast<int>(d) << std::endl;
+    // Int
+    if (!std::isnan(d) && !std::isinf(d) && d>=INT_MIN && d<=INT_MAX)
+        std::cout<<"int: "<<static_cast<int>(d)<<std::endl;
     else
-        std::cout << "int: impossible" << std::endl;
+        std::cout<<"int: impossible"<<std::endl;
 
-    /* Float */
-    float f = static_cast<float>(d);
-    std::cout << "float: ";
-    if (std::isnan(d))
-        std::cout << "nanf";
-    else if (std::isinf(d))
-    {
-        if (d < 0)
-            std::cout << "-inff";
+    // Float
+    float f=static_cast<float>(d);
+    std::cout<<"float: ";
+    if (std::isnan(d)) {
+        std::cout<<"nanf";
+    } else if (std::isinf(d)) {
+        if (d<0)
+            std::cout<<"-inff";
         else
-            std::cout << "+inff";
+            std::cout<<"+inff";
+    } else {
+        std::cout<<f;
+        if (d==static_cast<long long>(d) && d<=1000000 && d>=-1000000)
+            std::cout<<".0";
+        std::cout<<"f";
     }
-    else
-    {
-        std::cout << f;
-        if (d == static_cast<long long>(d) && d <= 1000000 && d >= -1000000)
-            std::cout << ".0";
-        std::cout << "f";
-    }
-    std::cout << std::endl;
+    std::cout<<std::endl;
 
-    /* Double */
-    std::cout << "double: ";
-    if (std::isnan(d))
-        std::cout << "nan";
-    else if (std::isinf(d))
-    {
-        if (d < 0)
-            std::cout << "-inf";
+    // Double
+    std::cout<<"double: ";
+    if (std::isnan(d)) {
+        std::cout<<"nan";
+    } else if (std::isinf(d)) {
+        if (d<0)
+            std::cout<<"-inf";
         else
-            std::cout << "+inf";
+            std::cout<<"+inf";
+    } else {
+        std::cout<<d;
+        if (d==static_cast<long long>(d) && d<=1000000 && d>=-1000000)
+            std::cout<<".0";
     }
-    else
-    {
-        std::cout << d;
-        if (d == static_cast<long long>(d) && d <= 1000000 && d >= -1000000)
-            std::cout << ".0";
-    }
-    std::cout << std::endl;
+    std::cout<<std::endl;
 }
 
-/* Class  */
+/* Class ********************************************************************* */
 ScalarConverter::ScalarConverter() {}
-ScalarConverter::ScalarConverter(ScalarConverter const &other)
-{
-    (void)other;
-}
+ScalarConverter::ScalarConverter(ScalarConverter const &o){(void)o;}
 ScalarConverter::~ScalarConverter() {}
-ScalarConverter &ScalarConverter::operator=(const ScalarConverter &) { return *this; }
+ScalarConverter &ScalarConverter::operator=(const ScalarConverter &){return *this;}
 
-/* Main conversion ************************************************************ */
-void ScalarConverter::convert(const std::string &str)
-{
-    int type = getType(str);
-
-    if (type == ERROR)
-    {
-        std::cout << "Invalid input" << std::endl;
+/* Main conversion *********************************************************** */
+void ScalarConverter::convert(const std::string &s) {
+    int t=getType(s);
+    if (t==ERROR) {
+        std::cout<<"Invalid input"<<std::endl;
         return;
     }
 
-    /* Handle special cases */
-    if (type == SPECIAL)
-    {
-        std::cout << "char: impossible" << std::endl
-                  << "int: impossible" << std::endl;
-        if (str == "nan" || str == "nanf")
-            std::cout << "float: nanf" << std::endl
-                      << "double: nan" << std::endl;
-        else if (str == "-inf" || str == "-inff")
-            std::cout << "float: -inff" << std::endl
-                      << "double: -inf" << std::endl;
+    if (t==SPECIAL) {
+        std::cout<<"char: impossible\nint: impossible"<<std::endl;
+        if (s=="nan"||s=="nanf")
+            std::cout<<"float: nanf\ndouble: nan"<<std::endl;
+        else if (s=="-inf"||s=="-inff")
+            std::cout<<"float: -inff\ndouble: -inf"<<std::endl;
         else
-            std::cout << "float: +inff" << std::endl
-                      << "double: +inf" << std::endl;
+            std::cout<<"float: +inff\ndouble: +inf"<<std::endl;
         return;
     }
 
-    if (type == CHAR)
-    {
-        displayResults(static_cast<double>(str[0]));
+    if (t==CHAR) {
+        displayResults(static_cast<double>(s[0]));
         return;
     }
 
-    /* Numeric types */
-    std::string num = str;
-    if (type == FLOAT)
-        num = str.substr(0, str.length() - 1);
+    std::string num;
+    if (t==FLOAT)
+        num=s.substr(0,s.length()-1);
+    else
+        num=s;
 
     char *end;
-    errno = 0;
-    double convertedValue = std::strtod(num.c_str(), &end);
+    errno=0;
+    double val=std::strtod(num.c_str(),&end);
 
-    if (errno == ERANGE)
-    {
-        std::cout << "char: impossible" << std::endl;
-        std::cout << "int: impossible" << std::endl;
-        if (convertedValue == HUGE_VAL)
-            std::cout << "float: +inff" << std::endl
-                      << "double: +inf" << std::endl;
-        else if (convertedValue == -HUGE_VAL)
-            std::cout << "float: -inff" << std::endl
-                      << "double: -inf" << std::endl;
+    if (errno==ERANGE) {
+        std::cout<<"char: impossible\nint: impossible"<<std::endl;
+        if (val==HUGE_VAL)
+            std::cout<<"float: +inff\ndouble: +inf"<<std::endl;
+        else if (val==-HUGE_VAL)
+            std::cout<<"float: -inff\ndouble: -inf"<<std::endl;
         else
-            std::cout << "float: 0.0f" << std::endl
-                      << "double: 0.0" << std::endl;
+            std::cout<<"float: 0.0f\ndouble: 0.0"<<std::endl;
+    } else if (end==num.c_str()) {
+        std::cout<<"Invalid input"<<std::endl;
+    } else {
+        displayResults(val);
     }
-    else if (end == num.c_str())
-        std::cout << "Invalid input" << std::endl;
-    else
-        displayResults(convertedValue);
 }
+

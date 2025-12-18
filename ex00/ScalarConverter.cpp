@@ -140,7 +140,7 @@ static void displayResults(double d)
     std::cout << std::endl;
 }
 
-/* Class methods */
+/* Class  */
 ScalarConverter::ScalarConverter() {}
 ScalarConverter::ScalarConverter(ScalarConverter const &other)
 {

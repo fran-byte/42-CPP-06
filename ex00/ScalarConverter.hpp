@@ -30,7 +30,7 @@ class ScalarConverter
 {
 private:
     ScalarConverter();
-    ScalarConverter(const ScalarConverter &other);
+    ScalarConverter(ScalarConverter const &other);
     ScalarConverter &operator=(const ScalarConverter &other);
     ~ScalarConverter();
 

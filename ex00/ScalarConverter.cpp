@@ -142,7 +142,10 @@ static void displayResults(double d)
 
 /* Class methods */
 ScalarConverter::ScalarConverter() {}
-ScalarConverter::ScalarConverter(const ScalarConverter &) {}
+ScalarConverter::ScalarConverter(ScalarConverter const &other)
+{
+    (void)other;
+}
 ScalarConverter::~ScalarConverter() {}
 ScalarConverter &ScalarConverter::operator=(const ScalarConverter &) { return *this; }
 

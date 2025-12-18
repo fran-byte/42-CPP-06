@@ -6,7 +6,7 @@
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 13:57:03 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/18 16:06:25 by frromero         ###   ########.fr       */
+/*   Updated: 2025/12/18 16:40:15 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ static void displayResults(double d)
     std::cout << std::endl;
 }
 
-/* Class ********************************************************************* */
+/* Class constructors ******************************************************** */
 ScalarConverter::ScalarConverter() {}
 ScalarConverter::ScalarConverter(ScalarConverter const &o) { (void)o; }
 ScalarConverter::~ScalarConverter() {}

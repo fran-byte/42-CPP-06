@@ -172,12 +172,10 @@ void ScalarConverter::convert(const std::string &s) {
         else
             std::cout<<"float: 0.0f\ndouble: 0.0"<<std::endl;
     } 
-    else if (end==num.c_str()) 
-   
+    else if (end==num.c_str())    
         std::cout<<"Invalid input"<<std::endl;
     
-    else {
-        displayResults(val);
-    }
+    else 
+        displayResults(val);    
 }
 

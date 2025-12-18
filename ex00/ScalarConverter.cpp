@@ -159,7 +159,7 @@ void ScalarConverter::convert(const std::string &s) {
         num=s;
 
     char *end;
-    errno=0;
+    errno=0; /* error function */
     double val=std::strtod(num.c_str(),&end);
 
     if (errno==ERANGE) /* RangeError ? */

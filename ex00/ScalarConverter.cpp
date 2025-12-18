@@ -34,18 +34,18 @@ static int getType(const std::string &str)
         return CHAR;
 
     /* Check 'f' suffix */
-    bool hasF = false;
+    bool isFloat = false;
     std::string num = str;
 
     if (str.length() > 1 && str[str.length() - 1] == 'f')
     {
-        hasF = true;
+        isFloat = true;
         num = str.substr(0, str.length() - 1);
     }
 
     /* Validate format */
     size_t dots = 0;
-    bool hasDigit = false;
+    bool isDigit = false;
     size_t i = 0;
 
     if (!num.empty() && (num[0] == '-' || num[0] == '+'))
@@ -54,7 +54,7 @@ static int getType(const std::string &str)
     for (; i < num.length(); ++i)
     {
         if (std::isdigit(num[i]))
-            hasDigit = true;
+            isDigit = true;
         else if (num[i] == '.')
         {
             ++dots;
@@ -65,15 +65,15 @@ static int getType(const std::string &str)
             return ERROR;
     }
 
-    if (!hasDigit)
+    if (!isDigit)
         return ERROR;
 
     /* Determine type */
-    if (hasF && dots <= 1)
+    if (isFloat && dots <= 1)
         return FLOAT;
-    if (!hasF && dots == 1)
+    if (!isFloat && dots == 1)
         return DOUBLE;
-    if (!hasF && dots == 0)
+    if (!isFloat && dots == 0)
         return INT;
     return ERROR;
 }

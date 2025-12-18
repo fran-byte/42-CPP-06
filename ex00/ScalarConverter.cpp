@@ -130,7 +130,7 @@ void ScalarConverter::convert(const std::string &s) {
     int t=getType(s);
     if (t==ERROR) 
     {
-        std::cout<<"Invalid input"<<std::endl;
+        std::cout<<"Not valid input"<<std::endl;
         return;
     }
 
@@ -173,9 +173,10 @@ void ScalarConverter::convert(const std::string &s) {
             std::cout<<"float: 0.0f\ndouble: 0.0"<<std::endl;
     } 
     else if (end==num.c_str())    
-        std::cout<<"Invalid input"<<std::endl;
+        std::cout<<"Not valid input"<<std::endl;
     
     else 
-        displayResults(val);    
+        displayResults(val);
+    
 }
 

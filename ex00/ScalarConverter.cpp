@@ -21,7 +21,8 @@
 #include <cctype>
 
 /* Detect type ************************************************************** */
-static int getType(const std::string &str) {
+static int getType(const std::string &str) 
+{
     if (str=="-inff"||str=="+inff"||str=="nanf"||str=="-inf"||str=="+inf"||str=="nan")
         return SPECIAL;
     if (str.length()==1 && !std::isdigit(str[0]) && str[0]!='-' && str[0]!='+')
@@ -40,10 +41,12 @@ static int getType(const std::string &str) {
     if (!num.empty() && (num[0]=='-'||num[0]=='+'))
         i=1;
 
-    for (; i<num.length(); ++i) {
+    for (; i<num.length(); ++i) 
+    {
         if (std::isdigit(num[i]))
             digit=true;
-        else if (num[i]=='.') {
+        else if (num[i]=='.') 
+        {
             ++dots;
             if (dots>1) return ERROR;
         } else return ERROR;
@@ -58,15 +61,16 @@ static int getType(const std::string &str) {
 /* Display results *********************************************************** */
 static void displayResults(double d) {
     // Char
-    if (!std::isnan(d) && !std::isinf(d) && d>=0 && d<=127) {
+    if (!std::isnan(d) && !std::isinf(d) && d>=0 && d<=127) 
+    {
         char c=static_cast<char>(d);
         if (std::isprint(c))
             std::cout<<"char: '"<<c<<"'"<<std::endl;
         else
             std::cout<<"char: Non displayable"<<std::endl;
-    } else {
-        std::cout<<"char: impossible"<<std::endl;
-    }
+    } 
+    else 
+        std::cout<<"char: impossible"<<std::endl;    
 
     // Int
     if (!std::isnan(d) && !std::isinf(d) && d>=INT_MIN && d<=INT_MAX)
@@ -77,14 +81,17 @@ static void displayResults(double d) {
     // Float
     float f=static_cast<float>(d);
     std::cout<<"float: ";
-    if (std::isnan(d)) {
-        std::cout<<"nanf";
-    } else if (std::isinf(d)) {
+    if (std::isnan(d))    
+        std::cout<<"nanf";    
+    else if (std::isinf(d)) 
+    {
         if (d<0)
             std::cout<<"-inff";
         else
             std::cout<<"+inff";
-    } else {
+    } 
+    else 
+    {
         std::cout<<f;
         if (d==static_cast<long long>(d) && d<=1000000 && d>=-1000000)
             std::cout<<".0";
@@ -94,14 +101,17 @@ static void displayResults(double d) {
 
     // Double
     std::cout<<"double: ";
-    if (std::isnan(d)) {
-        std::cout<<"nan";
-    } else if (std::isinf(d)) {
+    if (std::isnan(d))   
+        std::cout<<"nan";   
+    else if (std::isinf(d)) 
+    {
         if (d<0)
             std::cout<<"-inf";
         else
             std::cout<<"+inf";
-    } else {
+    } 
+    else 
+    {
         std::cout<<d;
         if (d==static_cast<long long>(d) && d<=1000000 && d>=-1000000)
             std::cout<<".0";
@@ -118,12 +128,14 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &){return *thi
 /* Main conversion *********************************************************** */
 void ScalarConverter::convert(const std::string &s) {
     int t=getType(s);
-    if (t==ERROR) {
+    if (t==ERROR) 
+    {
         std::cout<<"Invalid input"<<std::endl;
         return;
     }
 
-    if (t==SPECIAL) {
+    if (t==SPECIAL) 
+    {
         std::cout<<"char: impossible\nint: impossible"<<std::endl;
         if (s=="nan"||s=="nanf")
             std::cout<<"float: nanf\ndouble: nan"<<std::endl;
@@ -134,7 +146,8 @@ void ScalarConverter::convert(const std::string &s) {
         return;
     }
 
-    if (t==CHAR) {
+    if (t==CHAR) 
+    {
         displayResults(static_cast<double>(s[0]));
         return;
     }
@@ -149,7 +162,8 @@ void ScalarConverter::convert(const std::string &s) {
     errno=0;
     double val=std::strtod(num.c_str(),&end);
 
-    if (errno==ERANGE) {
+    if (errno==ERANGE) 
+    {
         std::cout<<"char: impossible\nint: impossible"<<std::endl;
         if (val==HUGE_VAL)
             std::cout<<"float: +inff\ndouble: +inf"<<std::endl;
@@ -157,10 +171,10 @@ void ScalarConverter::convert(const std::string &s) {
             std::cout<<"float: -inff\ndouble: -inf"<<std::endl;
         else
             std::cout<<"float: 0.0f\ndouble: 0.0"<<std::endl;
-    } else if (end==num.c_str()) {
-        std::cout<<"Invalid input"<<std::endl;
-    } else {
-        displayResults(val);
-    }
+    } 
+    else if (end==num.c_str())    
+        std::cout<<"Invalid input"<<std::endl;    
+    else 
+        displayResults(val);    
 }
 

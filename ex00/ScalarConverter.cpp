@@ -21,7 +21,7 @@
 #include <string>
 #include <cctype>
 
-/* Detect input type */
+/* DETECTING TYPES ************************************************************** */
 static int getType(const std::string &str)
 {
     /* Special cases */
@@ -78,7 +78,7 @@ static int getType(const std::string &str)
     return ERROR;
 }
 
-/* Display results */
+/* Display results ************************************************************ */
 static void displayResults(double d)
 {
     /* Char */
@@ -149,7 +149,7 @@ ScalarConverter::ScalarConverter(ScalarConverter const &other)
 ScalarConverter::~ScalarConverter() {}
 ScalarConverter &ScalarConverter::operator=(const ScalarConverter &) { return *this; }
 
-/* Main conversion */
+/* Main conversion ************************************************************ */
 void ScalarConverter::convert(const std::string &str)
 {
     int type = getType(str);

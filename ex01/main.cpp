@@ -20,13 +20,13 @@ int main(void)
 
     std::cout << "********************************************************************" << std::endl;
 
-    Data* rawPtr = Serializer::deserialize(ptrData);
+    Data* otherPtr = Serializer::deserialize(ptrData);
 
-    std::cout << "After DESERIALIZE rawPtr: school = " << rawPtr->school << std::endl;
-    std::cout << "After DESERIALIZE rawPtr: commonCore = " << rawPtr->commonCore << std::endl;
+    std::cout << "After DESERIALIZE otherPtr: school = " << otherPtr->school << std::endl;
+    std::cout << "After DESERIALIZE otherPtr: commonCore = " << otherPtr->commonCore << std::endl;
 
     std::cout << "Address original ptr: " << ptr << std::endl;
-    std::cout << "Address deserialized Other-ptr: " << rawPtr << std::endl;
+    std::cout << "Address deserialized otherPtr: " << otherPtr << std::endl;
 
     return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 15:29:16 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/17 20:33:38 by frromero         ###   ########.fr       */
+/*   Updated: 2025/12/20 21:25:45 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,30 +17,26 @@ int main(int argc, char **argv)
 {
     if (argc == 2 && argv[1][0] != '\0')
     {
-        bool printable = true;
-        for (int i = 0; argv[1][i]; i++)
-        {
-            if (argv[1][i] < 32 || argv[1][i] > 126)
-            {
-                printable = false;
-                break;
-            }
-        }
-        if (printable)
-            ScalarConverter::convert(argv[1]);
-        else
-            std::cout << "Parameter Not Printable" << std::endl;
+
+        ScalarConverter::convert(argv[1]);
     }
     else
     {
-        std::cout << "Invalid parameters [eg: ./convert -42.42 ]" << std::endl;
-        std::cout << "Usage: ./convert <literal>" << std::endl;
-        std::cout << "literal must be a single C++ strLiteral: char, int, float, or double." << std::endl;
-        std::cout << "Examples:" << std::endl;
-        std::cout << "  ./convert a" << std::endl;
-        std::cout << "  ./convert 42" << std::endl;
-        std::cout << "  ./convert 3.14f" << std::endl;
-        std::cout << "  ./convert nan" << std::endl;
+        std::cout << "\nInvalid parameters.\n\n"
+                  << "Usage:\n"
+                  << "  ./convert <literal>\n\n"
+                  << "Examples:\n"
+                  << "  CHAR    ./convert \"'a'\"\n"
+                  << "  CHAR    ./convert \"'1'\"\n"
+                  << "  INT     ./convert 42\n"
+                  << "  INT     ./convert \"42\"\n"
+                  << "  FLOAT   ./convert 3.14f\n"
+                  << "  FLOAT   ./convert \"3.14f\"\n"
+                  << "  DOUBLE  ./convert 3.14\n"
+                  << "  DOUBLE  ./convert \"3.14\"\n"
+                  << "  SPECIAL ./convert nan\n"
+                  << std::endl;
     }
+
     return (0);
 }

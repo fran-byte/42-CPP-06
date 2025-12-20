@@ -6,7 +6,7 @@
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 13:57:03 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/18 16:40:15 by frromero         ###   ########.fr       */
+/*   Updated: 2025/12/20 20:22:26 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,11 @@ static int getType(const std::string &str)
 {
     if (str == "-inff" || str == "+inff" || str == "nanf" || str == "-inf" || str == "+inf" || str == "nan")
         return SPECIAL;
-    if (str.length() == 1 && !std::isdigit(str[0]) && str[0] != '-' && str[0] != '+')
+    if (str.length() == 3 && str[0] == 39 && str[2] == 39 && str[1] >= 32 && str[1] <= 126)
+    {
+
         return CHAR;
+    };
 
     bool isFloat = false;
     std::string num = str;
@@ -69,16 +72,21 @@ static int getType(const std::string &str)
 static void displayResults(double d)
 {
     // Char
-    if (!std::isnan(d) && !std::isinf(d) && d >= 0 && d <= 127)
+    if (d >= 0 && d <= 127)
     {
-        char c = static_cast<char>(d);
-        if (std::isprint(c))
-            std::cout << "char: '" << c << "'" << std::endl;
+        if (d >= 32 && d <= 126)
+        {
+            std::cout << "char: '" << static_cast<char>(d) << "'" << std::endl;
+        }
         else
+        {
             std::cout << "char: Non displayable" << std::endl;
+        }
     }
     else
+    {
         std::cout << "char: impossible" << std::endl;
+    }
 
     // Int
     if (!std::isnan(d) && !std::isinf(d) && d >= INT_MIN && d <= INT_MAX)
@@ -157,7 +165,7 @@ void ScalarConverter::convert(const std::string &s)
 
     if (t == CHAR)
     {
-        displayResults(static_cast<double>(s[0]));
+        displayResults(static_cast<double>(s[1]));
         return;
     }
 

@@ -6,7 +6,7 @@
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 12:49:59 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/21 17:11:36 by frromero         ###   ########.fr       */
+/*   Updated: 2025/12/21 17:13:06 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void identify(Base *p)
 
 void identify(Base &p)
 {
-    try
+    try /* Tries to convert the reference to an A reference */
     {
         (void)dynamic_cast<A &>(p);
         std::cout << "A";

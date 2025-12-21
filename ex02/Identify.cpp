@@ -6,7 +6,7 @@
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 12:49:59 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/21 14:40:08 by frromero         ###   ########.fr       */
+/*   Updated: 2025/12/21 15:03:25 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,19 @@ Base *generate(void)
 void identify(Base *p)
 {
     if (dynamic_cast<A *>(p))
-        std::cout << "A" << std::endl;
+        std::cout << "A";
     else if (dynamic_cast<B *>(p))
-        std::cout << "B" << std::endl;
+        std::cout << "B";
     else if (dynamic_cast<C *>(p))
-        std::cout << "C" << std::endl;
-    else
-        std::cout << "Unknown type" << std::endl;
+        std::cout << "C";
 }
 
 void identify(Base &p)
 {
     try
     {
-        A &refA = dynamic_cast<A &>(p);
-        std::cout << "A" << std::endl;
-        (void)refA;
+        (void)dynamic_cast<A &>(p);
+        std::cout << "A";
         return;
     }
     catch (...)
@@ -50,9 +47,8 @@ void identify(Base &p)
     }
     try
     {
-        B &refB = dynamic_cast<B &>(p);
-        std::cout << "B" << std::endl;
-        (void)refB;
+        (void)dynamic_cast<B &>(p);
+        std::cout << "B";
         return;
     }
     catch (...)
@@ -61,9 +57,8 @@ void identify(Base &p)
     }
     try
     {
-        C &refC = dynamic_cast<C &>(p);
-        std::cout << "C" << std::endl;
-        (void)refC;
+        (void)dynamic_cast<C &>(p);
+        std::cout << "C";
         return;
     }
     catch (...)

@@ -6,12 +6,10 @@
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 12:29:11 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/21 12:30:19 by frromero         ###   ########.fr       */
+/*   Updated: 2025/12/21 14:51:39 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Base.hpp"
-
-Base::Base() {}
 
 Base::~Base() {}

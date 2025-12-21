@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Identify.hpp                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/21 12:46:01 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/21 14:22:10 by frromero         ###   ########.fr       */
+/*   Created: 2025/12/21 13:18:31 by frromero          #+#    #+#             */
+/*   Updated: 2025/12/21 14:33:45 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef IDENTIFY_HPP
-#define IDENTIFY_HPP
-
-#include <ctime>
-#include <iostream>
 #include <cstdlib>
+#include <ctime>
+#include "Identify.hpp"
 
-#include "Base.hpp"
-#include "A.hpp"
-#include "B.hpp"
-#include "C.hpp"
+int main()
+{
+    std::srand(std::time(NULL));
 
-Base *generate(void);
+    Base *obj1 = generate();
+    std::cout << "The actual type of the object pointed:" << std::endl;
+    identify(obj1);
+    std::cout << "The actual type of the object referenced:" << std::endl;
+    identify(*obj1);
+    delete (obj1);
 
-void identify(Base *p);
-
-void identify(Base &p);
-
-#endif
+    return 0;
+}

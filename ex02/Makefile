@@ -6,7 +6,7 @@
 #    By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/12 13:52:01 by frromero          #+#    #+#              #
-#    Updated: 2025/12/17 19:13:08 by frromero         ###   ########.fr        #
+#    Updated: 2025/12/21 13:38:08 by frromero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 INCLUDES = -I .
 
-SRC =	main.cpp Base.cpp
+SRC =	main.cpp Base.cpp Identify.cpp
 		
 OBJ = $(SRC:.cpp=.o)
 

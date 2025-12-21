@@ -6,7 +6,7 @@
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 12:49:59 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/21 17:16:32 by frromero         ###   ########.fr       */
+/*   Updated: 2025/12/21 17:17:23 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void identify(Base &p)
         return;
     }
     catch (...)
-    { /* It is not A */
+    { /* It is not A reference*/
     }
 
     try
@@ -52,7 +52,7 @@ void identify(Base &p)
         return;
     }
     catch (...)
-    { /* It is not B */
+    { /* It is not B reference*/
     }
 
     try
@@ -62,6 +62,6 @@ void identify(Base &p)
         return;
     }
     catch (...)
-    { /* It is not C */
+    { /* It is not C reference*/
     }
 }

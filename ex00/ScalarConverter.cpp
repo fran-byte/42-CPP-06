@@ -6,7 +6,7 @@
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 13:57:03 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/21 17:27:29 by frromero         ###   ########.fr       */
+/*   Updated: 2025/12/21 17:28:37 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,7 @@ static int getType(const std::string &str)
     if (str == "-inff" || str == "+inff" || str == "nanf" || str == "-inf" || str == "+inf" || str == "nan")
         return SPECIAL;
     if (str.length() == 3 && str[0] == 39 && str[2] == 39 && str[1] >= 32 && str[1] <= 126)
-    {
-
         return CHAR;
-    };
 
     bool isFloat = false;
     std::string num = str;

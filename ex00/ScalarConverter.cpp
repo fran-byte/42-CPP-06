@@ -6,7 +6,7 @@
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 13:57:03 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/20 20:22:26 by frromero         ###   ########.fr       */
+/*   Updated: 2025/12/21 17:27:29 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,18 +75,12 @@ static void displayResults(double d)
     if (d >= 0 && d <= 127)
     {
         if (d >= 32 && d <= 126)
-        {
             std::cout << "char: '" << static_cast<char>(d) << "'" << std::endl;
-        }
         else
-        {
             std::cout << "char: Non displayable" << std::endl;
-        }
     }
     else
-    {
         std::cout << "char: impossible" << std::endl;
-    }
 
     // Int
     if (!std::isnan(d) && !std::isinf(d) && d >= INT_MIN && d <= INT_MAX)

@@ -6,7 +6,7 @@
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 13:56:57 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/17 21:08:10 by frromero         ###   ########.fr       */
+/*   Updated: 2025/12/21 17:33:28 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ class ScalarConverter
 {
 private:
     ScalarConverter();
-    ScalarConverter(ScalarConverter const &other);
+    ScalarConverter(ScalarConverter const &copy);
     ScalarConverter &operator=(const ScalarConverter &other);
     ~ScalarConverter();
 

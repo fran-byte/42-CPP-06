@@ -6,7 +6,7 @@
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 12:49:59 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/21 14:29:37 by frromero         ###   ########.fr       */
+/*   Updated: 2025/12/21 14:40:08 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void identify(Base &p)
         A &refA = dynamic_cast<A &>(p);
         std::cout << "A" << std::endl;
         (void)refA;
+        return;
     }
     catch (...)
     {
@@ -52,6 +53,7 @@ void identify(Base &p)
         B &refB = dynamic_cast<B &>(p);
         std::cout << "B" << std::endl;
         (void)refB;
+        return;
     }
     catch (...)
     {
@@ -62,6 +64,7 @@ void identify(Base &p)
         C &refC = dynamic_cast<C &>(p);
         std::cout << "C" << std::endl;
         (void)refC;
+        return;
     }
     catch (...)
     {

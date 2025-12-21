@@ -6,7 +6,7 @@
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 12:49:59 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/21 17:13:06 by frromero         ###   ########.fr       */
+/*   Updated: 2025/12/21 17:15:09 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Base *generate(void)
 
 void identify(Base *p)
 {
-    if (dynamic_cast<A *>(p)) /* Tries casts the pointer to type A*  */
+    if (dynamic_cast<A *>(p)) /* Tries to casts pointer to an A pointer */
         std::cout << "A";
     else if (dynamic_cast<B *>(p))
         std::cout << "B";
@@ -35,7 +35,7 @@ void identify(Base *p)
 
 void identify(Base &p)
 {
-    try /* Tries to convert the reference to an A reference */
+    try /* Tries to cast reference to an A reference */
     {
         (void)dynamic_cast<A &>(p);
         std::cout << "A";

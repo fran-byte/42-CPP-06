@@ -6,7 +6,7 @@
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 13:57:03 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/21 17:36:51 by frromero         ###   ########.fr       */
+/*   Updated: 2025/12/27 16:19:42 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ static void displayResults(double d)
         std::cout << "char: impossible" << std::endl;
 
     // Int
-    if (!std::isnan(d) && !std::isinf(d) && d >= INT_MIN && d <= INT_MAX)
+    if (!std::isnan(d) && !std::isinf(d) && d >= INT_MIN && d <= INT_MAX) // NoNumber, NoInfinity , isINT
         std::cout << "int: " << static_cast<int>(d) << std::endl;
     else
         std::cout << "int: impossible" << std::endl;

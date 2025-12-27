@@ -6,7 +6,7 @@
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 13:57:03 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/27 16:59:56 by frromero         ###   ########.fr       */
+/*   Updated: 2025/12/27 17:00:53 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static int getType(const std::string &str)
         return FLOAT;
     if (dots > 0) // not flag f and dots > 0
         return DOUBLE;
-    return INT;
+    return INT; // not flag f, not dots > 0
 }
 
 /* Display results *********************************************************** */

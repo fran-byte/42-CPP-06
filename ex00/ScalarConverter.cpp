@@ -6,7 +6,7 @@
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 13:57:03 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/27 16:30:47 by frromero         ###   ########.fr       */
+/*   Updated: 2025/12/27 16:38:54 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ static void displayResults(double d)
     else
     {
         std::cout << d;
-        if (d == static_cast<long long>(d) && d <= 1000000 && d >= -1000000)
+        if (d == static_cast<long long>(d))
             std::cout << ".0";
     }
     std::cout << std::endl;

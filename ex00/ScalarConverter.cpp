@@ -6,7 +6,7 @@
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 13:57:03 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/27 16:19:42 by frromero         ###   ########.fr       */
+/*   Updated: 2025/12/27 16:30:47 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,9 @@ static void displayResults(double d)
     // Float
     float f = static_cast<float>(d);
     std::cout << "float: ";
-    if (std::isnan(d))
+    if (std::isnan(d)) // Not a number?
         std::cout << "nanf";
-    else if (std::isinf(d))
+    else if (std::isinf(d)) // infinity?
     {
         if (d < 0)
             std::cout << "-inff";
@@ -100,8 +100,8 @@ static void displayResults(double d)
     else
     {
         std::cout << f;
-        if (d == static_cast<long long>(d) && d <= 1000000 && d >= -1000000)
-            std::cout << ".0";
+        if (d == static_cast<long long>(d))
+            std::cout << ".0"; // add decimal
         std::cout << "f";
     }
     std::cout << std::endl;

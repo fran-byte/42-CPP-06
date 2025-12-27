@@ -6,7 +6,7 @@
 /*   By: frromero <frromero@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 11:27:54 by frromero          #+#    #+#             */
-/*   Updated: 2025/12/21 11:27:54 by frromero         ###   ########.fr       */
+/*   Updated: 2025/12/27 17:54:44 by frromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ uintptr_t Serializer::serialize(Data *ptr)
     if (!ptr)
     {
         std::cout << "!ptr";
-        errno = EINVAL;
+        errno = EINVAL; // Error Invalid
         return 0;
     }
     uintptr_t ptrInt = reinterpret_cast<uintptr_t>(ptr);
 
-    errno = 0;
+    errno = 0; // It is OK
     return ptrInt;
 }
 
